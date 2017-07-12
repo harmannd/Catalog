@@ -41,4 +41,29 @@ item2 = Item(
 session.add(item2)
 session.commit()
 
+# Category
+category1 = Category(name="Soccer")
+session.add(category1)
+session.commit()
+
+# Category
+category1 = Category(name="Basketball")
+session.add(category1)
+session.commit()
+
+# Category
+category1 = Category(name="Baseball")
+session.add(category1)
+session.commit()
+
+# Category
+category1 = Category(name="Rock Climbing")
+session.add(category1)
+session.commit()
+
+# Category
+category1 = Category(name="Frisbee")
+session.add(category1)
+session.commit()
+
 print "Added to database!"
