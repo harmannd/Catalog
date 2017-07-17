@@ -1,7 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 {% include "header.html" %}
-    <h1>{{item.name}}</h1>
-    <p>{{item.description}}</p>
-    <img src="{{ item.image_url }}">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>{{ item.name }}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <img class="item_pic" src="{{ item.image_url }}">
+        </div>
+        <div class="col-md-6">
+            <p class="item_description">{{ item.description }}</p>
+        </div>
+    </div>
 {% endblock %}

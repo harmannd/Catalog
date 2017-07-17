@@ -1,17 +1,19 @@
-<div class="row">
-    <div class="col-md-10">
-        <a href="{{ url_for('showCatalog') }}">Show Catalog</a>
-    </div>
-    <div class="col-md-2">
-        {% if 'username' not in session %}
-            <a href="{{ url_for('showLogin') }}">Log in</a>
-        {% else %}
-            <a href="{{ url_for('disconnect') }}">Log out</a>
-        {% endif %}
+<div class="navbar row">
+    <div class="content">
+        <div class="title_button col-xs-9">
+            <a href="{{ url_for('showCatalog') }}"><h1>Catalog</h1></a>
+        </div>
+        <div class="col-xs-3" id="log">
+            {% if 'username' not in session %}
+                <a class="log_button" href="{{ url_for('showLogin') }}"><p>Log in</p></a>
+            {% else %}
+                <a class="log_button" href="{{ url_for('disconnect') }}"><p>Log out</p></a>
+            {% endif %}
+        </div>
     </div>
 </div>
 
-<div class="row">
+<div class="content row">
     <div class="flash col-md-12">
         {% with messages = get_flashed_messages() %}
             {% if messages %}

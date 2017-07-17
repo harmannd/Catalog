@@ -53,10 +53,11 @@ def catalogItemJSON(category_name, item_name):
 @app.route('/catalog/')
 def showCatalog():
     categories = session.query(Category).all()
+    latestItems = session.query(Item).limit(10)
     if 'username' not in login_session:
-        return render_template('public_catalog.html', categories=categories)
+        return render_template('public_catalog.html', categories=categories, latestItems=latestItems)
     else:
-        return render_template('catalog.html', categories=categories)
+        return render_template('catalog.html', categories=categories, latestItems=latestItems)
 
 
 # Show category items
