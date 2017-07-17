@@ -63,12 +63,13 @@ def showCatalog():
 # Show category items
 @app.route('/catalog/<string:category_name>/')
 def showCategoryItems(category_name):
+    categories = session.query(Category).all()
     selected_category = session.query(Category).filter_by(name=category_name).one()
     items = session.query(Item).filter_by(category=selected_category).all()
     if 'username' not in login_session:
-        return render_template('public_category_items.html', items=items)
+        return render_template('public_category_items.html', categories=categories, items=items, category_name=category_name)
     else:
-        return render_template('category_items.html', items=items)
+        return render_template('category_items.html', categories=categories, items=items, category_name=category_name)
 
 
 # Show item details
@@ -130,12 +131,14 @@ def editItem(category_name, item_name):
     if request.method == 'POST':
         name = request.form['name']
         description = request.form['description']
+        image_url = request.form['image_url']
         category = session.query(Category).filter_by(name=request.form['category']).one()
 
         if name and description:
             itemToEdit.name = name
             itemToEdit.description = description
             itemToEdit.category = category
+            itemToEdit.image_url = image_url
             session.add(itemToEdit)
             session.commit()
             flash("Item edited successfully!")

@@ -1,27 +1,78 @@
 {% extends "base.html" %}
 {% block content %}
 {% include "header.html" %}
-    <h1>New Item</h1>
+    <div class="main">
+        <div class="main-section">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>New Item</h2>
+                </div>
+            </div>
 
-    <div class="error">{{error}}</div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="error">{{ error }}</div>
+                </div>
+            </div>
 
-    <form action="{{ url_for('newItem') }}" method="post">
-        <label>Item Name</label>
-        <input type="text" name="name">
+            <form action="{{ url_for('newItem') }}" method="post">
+                <div class="row">
+                    <div class="label col-md-12">
+                        <label>Item Name: </label>
+                    </div>
+                </div>
+                <div class="item_input row">
+                    <div class="col-md-12">
+                        <input type="text" name="name">
+                    </div>
+                </div>
 
-        <label>Description</label>
-        <input type="text" name="description">
+                <div class="row">
+                    <div class="label col-md-12">
+                        <label>Description: </label>
+                    </div>
+                </div>
+                <div class="item_input row">
+                    <div class="col-md-12">
+                        <input type="text" name="description">
+                    </div>
+                </div>
 
-        <label>Category</label>
-        <select name="category">
-            {% for category in categories %}
-            <option value="{{category.name}}">{{category.name}}</option>
-            {% endfor %}
-        </select>
+                <div class="row">
+                    <div class="label col-md-12">
+                        <label>Category: </label>
+                    </div>
+                </div>
+                <div class="item_input row">
+                    <div class="col-md-12">
+                        <select name="category">
+                            {% for category in categories %}
+                                <option value="{{ category.name }}">{{ category.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
 
-        <label>Image URL</label>
-        <input type="text" name="image_url">
+                <div class="row">
+                    <div class="label col-md-12">
+                        <label>Image URL: </label>
+                    </div>
+                </div>
+                <div class="item_input row">
+                    <div class="col-md-12">
+                        <input type="text" name="image_url">
+                    </div>
+                </div>
 
-        <input type="submit" name="submit" value="Submit">
-    </form>
+                <div class="row">
+                    <div class="options item_input col-xs-6">
+                        <input type="submit" name="submit" value="Submit">
+                    </div>
+                    <div class="link col-xs-6">
+                        <a class="cancel button" href="{{ url_for('showCatalog') }}"><h3>Cancel</h3></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 {% endblock %}
