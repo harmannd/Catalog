@@ -7,6 +7,14 @@ Base = declarative_base()
 
 
 class User(Base):
+    """Database model for catalog users.
+
+    Attributes:
+        id (int): User's id.
+        name (str): User's name.
+        email (str): User's email.
+        picture (str): URL string for picture.
+    """
     __tablename__ = 'user'
 
     id = Column(Integer, primary_key=True)
@@ -16,6 +24,12 @@ class User(Base):
 
 
 class Category(Base):
+    """Database model for categories.
+
+    Attributes:
+        id (int): Category id.
+        name (str): Category name.
+    """
     __tablename__ = 'category'
 
     id = Column(Integer, primary_key=True)
@@ -31,6 +45,18 @@ class Category(Base):
 
 
 class Item(Base):
+    """Database model for category items.
+
+    Attributes:
+        id (int): Item id.
+        name (str): Item name.
+        description (str): Short description of item.
+        image_url (str): URL string for image.
+        category_id (int): Id of category the item belongs to.
+        category (reference): Links the item to the category.
+        user_id (int): Id of the user that created the item.
+        user (reference): Links the item to the user.
+    """
     __tablename__ = 'item'
 
     id = Column(Integer, primary_key=True)

@@ -188,6 +188,14 @@ h3 {
     padding-right: 10px;
 }
 
+#fb_button {
+    border: none;
+}
+
+.g_button {
+    width: 150px;
+}
+
 /*
 * Media
 */
